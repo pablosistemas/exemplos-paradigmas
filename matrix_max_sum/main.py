@@ -24,7 +24,7 @@ def max_sub_sum(matrix):
     for i in range(num_linhas):
         for j in range(num_colunas):
             for k in range(i, num_linhas):
-                for l in range(k, num_colunas):
+                for l in range(j, num_colunas):
                     sum = matrix[k, l]
                     if (i > 0):
                         sum = sum - matrix[i-1, l]
@@ -35,7 +35,7 @@ def max_sub_sum(matrix):
                     if sum > max_sum:
                         max_sum = sum
                         x_tl = i
-                        y_tl = l
+                        y_tl = j
                         x_br = k
                         y_br = l
     return [max_sum, x_tl, y_tl, x_br, y_br]
@@ -51,7 +51,7 @@ def main():
     global M_sum
     M_sum = cria_matrix_soma(M)
     result = max_sub_sum(M_sum)
-    print(result)
+    print("(%d,%d):(%d,%d) = %d"%(result[1],result[2],result[3],result[4],result[0]))
 
 
 if __name__ == "__main__":
